@@ -1,0 +1,67 @@
+CREATE DATABASE IF NOT EXISTS healthprojetc;
+
+USE healthprojetc;
+
+CREATE TABLE IF NOT EXISTS tb_pacientes(
+	cpf VARCHAR(11),
+	nome VARCHAR(75), 
+    datanascimento VARCHAR(11),
+    email VARCHAR(100), 
+    telefone VARCHAR(12),
+    PRIMARY KEY (cpf)
+);
+
+CREATE TABLE IF NOT EXISTS tb_funcionarios(
+	usuario VARCHAR(45), 
+    nome VARCHAR(75), 
+    senha VARCHAR(45),
+    cargo VARCHAR(20),
+    PRIMARY KEY (usuario)
+);
+
+CREATE TABLE IF NOT EXISTS tb_atendimentos(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	cpfpaciente VARCHAR(11), 
+    nomepaciente VARCHAR(75), 
+    medico VARCHAR(50),
+    prioridade VARCHAR(20),
+    dia VARCHAR(40),
+    hora VARCHAR(10), 
+    diagnostico VARCHAR(10000)
+);
+
+CREATE TABLE IF NOT EXISTS tb_relatorios_sistema(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(75),
+    cargo VARCHAR(20), 
+    acao VARCHAR(10000)
+);
+
+CREATE TABLE IF NOT EXISTS tb_relatorios_consultas(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nomemedico VARCHAR(75),
+    cpfpaciente VARCHAR(11), 
+    nomepaciente VARCHAR(75), 
+    prioridade VARCHAR(20), 
+    diagnostico VARCHAR(10000)
+);
+
+SELECT * FROM tb_funcionarios;
+SELECT * FROM tb_pacientes;
+SELECT * FROM tb_atendimentos;
+
+SELECT * FROM tb_relatorios_sistema;
+SELECT * FROM tb_relatorios_consultas;
+
+
+############################# COMANDO TABLE USUARIOS #############################
+INSERT INTO tb_funcionarios (usuario, nome, senha, cargo) VALUES ( "admin01", "Felipe Lopes", "123456", "Administrador");
+
+
+############################# DELETAR TABELAS E DATABASE #############################
+#DROP TABLE tb_relatorios_sistema;
+#DROP TABLE tb_relatorios_consultas;
+#DROP TABLE tb_atendimentos;
+#DROP TABLE tb_pacientes;
+#DROP TABLE tb_funcionarios;
+#DROP database healthprojetc;
